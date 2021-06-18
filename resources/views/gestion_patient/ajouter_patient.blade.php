@@ -17,7 +17,7 @@
         <div class="mb-3">
         <label for="prenom">Prenom</label>
         <input type="text" id="prenom" name="prenom"class="form-control  @error('prenom') is-invalid @enderror">
-        @error('pernom')
+        @error('prenom')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror        
         </div>
@@ -55,12 +55,12 @@
         </div>
         <hr>
         <div class="col-12">
+        <a href="{{route('liste_patient')}}" class="btn btn-primary">Annuler</a>
             <button class="btn btn-primary" type="submit">Enregistrer</button>
-            <a href="{{route('liste_patient')}}"><button class="btn btn-primary" > Annuler </button></a>
+           
         </div>
         
     </form>
-    
 </div>
 
 @endsection

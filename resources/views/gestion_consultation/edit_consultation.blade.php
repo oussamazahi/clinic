@@ -4,30 +4,27 @@
 
     <div class="content">
         <h1 class="backg" >Modifier Consultation</h1>
-        <form action="{{ route('liste_consultation') }}" method=""  class="backg">
+        <form action="/update_consultation/{{ $cons->id }}" method="POST"  class="backg">
             @csrf
-            <select class="form-select " name="id_patient">
-                <option selected>Choisir Patient</option>
-                    @foreach($patients as $patient)
-                        <option value="{{$patient->id}}" >{{$patient->nom}} -- {{$patient->prenom}} </option>
-                    @endforeach
-            </select>
+            <h2 >{{ $patient->nom . ' -- ' . $patient->prenom }}</h2>
+                
             <div class="mb-3">
             <label for="concluion">Concluion</label>
-            <input type="text" id="concluion" name="concluion"class="form-control" required >
+            <input type="text" id="concluion" name="concluion"class="form-control" value="{{ $cons->concluion }}" required >
             </div>
             
             <div class="mb-3">
             <label for="examen">Examen</label>
-            <input type="text" id="examen" name="examen"class="form-control" required  maxlength="50" >
+            <input type="text" id="examen" name="examen"class="form-control" value="{{ $cons->examen }}" required  maxlength="50" >
             </div>
             
             <div class="mb-3">
             <label for="motif">Motif</label>
-            <input type="text" id="motif" name="motif"class="form-control" required  maxlength="50" >
+            <input type="text" id="motif" name="motif" class="form-control" value="{{ $cons->motif }}" required  maxlength="50" >
             </div>
             <div class="col-12">
-                <button class="btn btn-primary" type="submit">Enregistrer</button>
+            <a href="{{route('liste_consultation')}}"> <button class="btn btn-outline-dark" > Annuler  </button></a>
+                <button class="btn btn-outline-dark" type="submit">Enregistrer</button>
             </div>
 
         </form>

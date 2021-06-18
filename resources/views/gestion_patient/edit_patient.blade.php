@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="content">
-    <h1 class="backg"> Modifier Patient</h1>
+    <h1 class="backg"> Mdodifier Patient</h1>
     <form action="/update_patient/{{$patient->id}}" method="POST"  class="backg" style="padding:10px;background-color: #ffffff8c;border-radius: 10px;">
         @csrf
 
@@ -17,7 +17,7 @@
         <div class="mb-3">
         <label for="prenom">Prenom</label>
         <input type="text" id="prenom" name="prenom"class="form-control @error('prenom') is-invalid @enderror" value="{{$patient->prenom}}"  >
-        @error('pernom')
+        @error('prenom')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror     
         </div>

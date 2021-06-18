@@ -41,11 +41,12 @@ Route::get('/edit_rendez_vous/{id}','Rendez_vousController@edit')->name('edit_re
 Route::post('/update_rendez_vous/{id}','Rendez_vousController@update')->name('update_rendez_vous');
 
 
-
-
-
 Route::get('/liste_des_consultation','ConsultationController@liste_des_consultation')->name('liste_consultation');
 Route::get('/ajouter_consultation','ConsultationController@ajouter_consultation')->name('ajouter_consultation');
+Route::post('/liste_des_consultation','ConsultationController@store')->name('store_consultation');
+Route::delete('/liste_des_consultation/{id}','ConsultationController@destroy')->name('destroy_consultation');
+Route::get('/edit_consultation/{id}','ConsultationController@edit')->name('edit_consultation');
+Route::post('/update_consultation/{id}','ConsultationController@update')->name('update_consultation');
 
 
 Auth::routes();

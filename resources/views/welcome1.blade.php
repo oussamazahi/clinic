@@ -2,7 +2,7 @@
 
 @section('content')
         <div class=" position-ref full-height">
-            <div class="content backg">
+            <div class="content m-b-md backg" style="margin: 100px auto;">
                 <a href="/"><p style="color: #0b70c7;">  Qui sommes-nous ??</p></a>
               
                 <p style="color: #0485d0;float: left;">Cabinet Medical :</p>  

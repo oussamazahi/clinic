@@ -37,7 +37,7 @@
                 <br>
                 
                 <div class="col-12">
-                    <button class="btn btn-primary" type="submit">Enregistrer</button>
+                    <button class="btn btn-outline-dark" type="submit">Enregistrer</button>
                     <a href="/liste_des_rendez_vous">
                     <button type="button" class="btn btn-outline-dark"> Annuler </button>
                     </a>

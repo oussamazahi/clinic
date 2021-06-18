@@ -36,6 +36,7 @@
         background-color: #f8fafc8c !important;
         }
         .content{
+            text-align: center;
             width: 70%;
             margin: 10px auto;
         }

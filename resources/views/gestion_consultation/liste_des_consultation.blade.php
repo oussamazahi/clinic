@@ -42,7 +42,7 @@
                             </button>
                         </a>
                         
-                        <form class="delete" action="/liste_des_consultation/{{$concultation->id}}" method="POST">
+                        <form class="delete" action="/liste_des_consultation/{{$consultation->id}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button  class="btn btn-outline-dark">
@@ -55,8 +55,7 @@
                 @endforeach
             </tbody>
             
-        </table>
-  <     
+        </table>     
         <a href="/home"> <button class="btn btn-outline-dark" > Retour </button></a>
     </div>
 @endsection

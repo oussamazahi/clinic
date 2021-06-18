@@ -29,16 +29,20 @@ class ConsultationController extends Controller
     }
     public function ajouter_consultation(){
         $patient = Patient::all();
-        $rdv = Rendez_vous::all();
+        $rdv = Rendez_vous::all()->map(function ($item) {
+            $patient = patient::find($item->id_patient);
+            $item['nom_patient'] = $patient->nom;
+            $item['prenom_patient'] = $patient->prenom;
+            return $item;
+        });
         $cons = Consultation::all();
         return view('gestion_consultation\ajouter_consultation',compact("patient","rdv","cons"));
     } 
     public function store(){
-
         $cons = new Consultation();
-        $cons->id_patient = request('id_patient');
         $cons->id_rdv = request('id_rdv');
-        $cons->id_ord = request('id_ord');
+        $rdv = Rendez_vous::where('id_rdv',request('id_rdv'))->get()->first();
+        $cons->id_patient = $rdv->id_patient;
         $cons->concluion = request('concluion');
         $cons->examen = request('examen');
         $cons->motif = request('motif');
@@ -56,23 +60,20 @@ class ConsultationController extends Controller
 
     public function edit($id){
         $cons =Consultation::findOrFail($id);
-        $cons =Consultation::select('id','nom','prenom','adresse_email','num_tel','sexe','date_N')->find($id);
+        $cons =Consultation::find($id);
+        $patient = Patient::find($cons->id_patient);
 
-       return view('gestion_patient.edit_patient',compact('patient'));
+       return view('gestion_consultation.edit_consultation',compact('cons','patient'));
     }
 
     public function update(Request $request,$id){
         
         $cons =Consultation::findOrFail($id);
         $cons-> update([
-            'exa' =>request('exa'),
-            'prenom' =>request('prenom'),
-            'adresse_email' =>request('email'),
-            'num_tel' =>request('num_tel'),
-            'sexe' =>request('sexe'),
-            'date_N' =>request('date_N')
-           
+            'examen' =>request('examen'),
+            'motif' =>request('motif'),
+            'concluion' =>request('concluion'),
         ]);
-        return redirect('/liste_des_patient') ;
+        return redirect('/liste_des_consultation') ;
     }
 }

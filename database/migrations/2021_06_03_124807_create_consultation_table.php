@@ -17,7 +17,7 @@ class CreateConsultationTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->unsignedBigInteger('id_patient');
-            $table->unsignedBigInteger('id_ord');
+            $table->unsignedBigInteger('id_ord')->nullable();
             $table->unsignedBigInteger('id_rdv');
             $table->string('concluion');
             $table->string('examen');

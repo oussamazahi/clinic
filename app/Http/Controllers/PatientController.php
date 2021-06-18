@@ -81,7 +81,7 @@ class PatientController extends Controller
             'prenom.required' => 'Entre votre prenom',
             'prenom.max' => 'Le prenom est grand',
             'email.required' => 'Entre votre email',
-            'email.unique' => ' Votre email existe déjè',
+           
             'num_tel.required' => 'Entre votre numéro téléphone',
             'num_tel.numeric' => ' votre numéro téléphone est incorrect',
             'sexe.required' => 'Entre votre sexe',
@@ -93,7 +93,7 @@ class PatientController extends Controller
         [
             'nom'=>'required | max:50',
             'prenom'=>'required | max:50',
-            'email'=>'required | unique:patient,adresse_email',
+            'email'=>'required ',
             'num_tel'=>'required | numeric',
             'sexe'=>'required',
             'date_n'=>'required',
