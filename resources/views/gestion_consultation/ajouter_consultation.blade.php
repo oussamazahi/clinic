@@ -27,8 +27,8 @@
             <input type="text" id="motif" name="motif"class="form-control"    >
             </div>
             <div class="col-12">
-                <a href="{{route('liste_consultation')}} "> <button class="btn btn-outline-dark" > Annuler  </button></a>
                 <button class="btn btn-outline-dark" type="submit">Enregistrer</button>
+                <a href="{{route('liste_consultation')}} "> <button class="btn btn-outline-dark" > Annuler  </button></a>
             </div>
 
         </form>

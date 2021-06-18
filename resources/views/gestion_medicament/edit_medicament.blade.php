@@ -22,8 +22,9 @@
             @enderror    
             </div>
             <div class="col-12">
-                <a href="/liste_des_medicament"><button class="btn btn-outline-dark"> Retour </button> </a>
+               
                 <button class="btn btn-outline-dark" type="submit">Enregistrer</button>
+                <a href="/liste_des_medicament"><button class="btn btn-outline-dark"> Retour </button> </a>
             </div>
 
         </form>

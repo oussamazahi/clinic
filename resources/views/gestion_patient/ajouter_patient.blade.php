@@ -55,9 +55,8 @@
         </div>
         <hr>
         <div class="col-12">
-        <a href="{{route('liste_patient')}}" class="btn btn-primary">Annuler</a>
-            <button class="btn btn-primary" type="submit">Enregistrer</button>
-           
+            <button class="btn btn-outline-dark" type="submit">Enregistrer</button>
+            <a href="{{route('liste_patient')}}" class="btn btn-outline-dark">Annuler</a>   
         </div>
         
     </form>
