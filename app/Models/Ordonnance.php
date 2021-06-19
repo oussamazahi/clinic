@@ -6,15 +6,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ordonnance extends Model
 {
-    protected $table ='medicament';
+    protected $table ='ordonnance';
     protected $fillable=[	
         'id',
-        'nom_com',
-        'nom_scie',
+        'date_ord',
         'created_at',
         'updated_at'
     ];
     protected $hidden=[ 
         'created_at',
         'updated_at'
-    ];}
+    ];
+
+    public function patient()
+    {
+       return $this->belongsTo(patient::class);
+    }
+    public function medicament()
+    {
+       return $this->belongsTo(medicament::class);
+    }
+
+}

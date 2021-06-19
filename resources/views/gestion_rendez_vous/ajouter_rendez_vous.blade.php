@@ -8,28 +8,44 @@
                 @csrf
                 <br>
                 
-                <select class="form-select " name="id_patient">
+                <select class="form-select @error('id_patient') is-invalid @enderror" name="id_patient" id="id_patient">
                 <option selected>Choisir Patient</option>
                     @foreach($patients as $patient)
                         <option value="{{$patient->id}}" >{{$patient->nom}} -- {{$patient->prenom}} </option>
                     @endforeach
+                    @error('id_patient')
+                        <div class="alert alert-danger ">{{ $message }}</div>
+                    @enderror
                 </select>
                 <div class="mb-3">
                 <label for="heure_rdv">Heure de renrez-vous</label>
-                <input type="time" id="heure_rdv" name="heure_rdv"class="form-control" required>
+                <input type="time" id="heure_rdv" name="heure_rdv"class="form-control @error('heure_rdv') is-invalid @enderror" >
+                
+                @error('heure_rdv')
+                    <div class="alert alert-danger ">{{ $message }}</div>
+                @enderror
+
                 </div>
                 
                 <div class="mb-3">
                 <label for="date_rdv">Date de rendez-vous </label>
-                <input type="date" id="date_rdv" name="date_rdv"class="form-control" required >
+                <input type="date" id="date_rdv" name="date_rdv"class="form-control @error('date_rdv') is-invalid @enderror" >
+                
+                @error('date_rdv ')
+                    <div class="alert alert-danger ">{{ $message }}</div>
+                @enderror
                 </div>
                 
-                <div class="form-check">
+                <div class="mb-3">
                
-                <input class="form-check-input" type="radio" name="etat_rdv" id="urgent" value="Urgent">
-                <label for="urgent"class="form-check-label">Rendez-vous Urgent </label><br>
-                <input class="form-check-input" type="radio" name="etat_rdv" id="normale"value="Normale">
-                <label class="form-check-label" for="flexRadioDefault2"> Rendez-vous Normae  </label>
+                <input class=" @error('etat_rdv') is-invalid @enderror" type="radio" name="etat_rdv" id="etat_rdv" value="Urgent">
+                <label for="urgent">Rendez-vous Urgent </label><br>
+                <input class=" @error('etat_rdv') is-invalid @enderror" type="radio" name="etat_rdv" id="etat_rdv"value="Normale">
+                <label  for="Normale"> Rendez-vous Normale  </label>
+
+                @error('etat_rdv')
+                    <div class="alert alert-danger ">{{ $message }}</div>
+                @enderror
 
                 </div>
                 <br>

@@ -44,6 +44,13 @@ class MedicamentController extends Controller
     public function update(Request $request, $id){
         
         $med =Medicament::findOrFail($id);
+
+        $rules= $this -> getRules();
+        
+        $message = $this->getMessages();
+
+        $validator =  $request->validate($rules,$message);
+
         $med-> update([
             'nom_com' =>request('nom_com'),
             'nom_scie' =>request('nom_scie')

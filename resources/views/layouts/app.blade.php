@@ -117,7 +117,7 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ Auth::user()->name }}
                                 </a>
-                                <ul class="dropdown-menu" >
+                                <ul class="dropdown-menu" style="background-color: #e1edfc;">
                                     <li>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

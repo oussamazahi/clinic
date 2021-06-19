@@ -25,7 +25,7 @@ class ConsultationController extends Controller
             return $item;
         });
         return view('gestion_consultation\liste_des_consultation',['cons'=>$cons]);
-      //  return view();
+     
     }
     public function ajouter_consultation(){
         $patient = Patient::all();

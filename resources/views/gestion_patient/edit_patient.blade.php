@@ -3,7 +3,7 @@
 @section('content')
 <div class="content">
     <h1 class="backg"> Mdodifier Patient</h1>
-    <form action="/update_patient/{{$patient->id}}" method="POST"  class="backg" style="padding:10px;background-color: #ffffff8c;border-radius: 10px;">
+    <form action="/update_patient/{{$rdv->id_patient}}" method="POST"  class="backg">
         @csrf
 
         <div class="mb-3">

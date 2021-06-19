@@ -8,6 +8,8 @@ use App\Models\Rendez_vous;
 
 use App\Models\Patient;
 
+use Illuminate\Support\Facades\Vallidator;
+
 
 class Rendez_vousController extends Controller
 {
@@ -15,7 +17,7 @@ class Rendez_vousController extends Controller
        
         
         // $rdv= Rendez_vous::orderBy('heure_rdv','desc')->get();
-        // $rdv= Rendez_vous::orderBy('etat_rdv','desc')->get();
+        //$rdv= Rendez_vous::orderBy('etat_rdv','desc')->get();
         // $rdv= Rendez_vous::orderBy('date_rdv')->get();
         $rdv = Rendez_vous::all()->map(function ($item) {
             $patient = patient::find($item->id_patient);
@@ -29,13 +31,30 @@ class Rendez_vousController extends Controller
         $patients = Patient::all();
         return view('gestion_rendez_vous\ajouter_rendez_vous',compact("patients"));
     }
-    public function ajouter(){
-        $patients = Patient::all();
-        return view('gestion_rendez_vous\liste_rendez_vous',compact("patients"));
-    }
     
-    public function store(){
+    public function store( Request $request){
         $rdv = new Rendez_vous();
+
+        $rules=  [
+            'id_patient'=>'required | max:50',
+            'etat_rdv'=>'required | max:50',
+            'date_rdv'=>'required ',
+            'heure_rdv'=>'required ',
+        ];
+        
+        $message = [
+            'id_patient.required' => 'Choisir votre patient',
+            'id_patient.max' => 'Le patient est grand',
+            'etat_rdv.required' => 'Choisir votre etate de rendez-vous',
+            'etat_rdv.max' => 'Le rendez-vous est grand',
+            'date_rdv.required' => 'Entre votre date rendez-vous',
+            'heure_rdv.required' => 'Entre votre heure rendez-vous',
+            'date_rdv.unique' => ' Votre date rendez-vous exist déja',
+            'heure_rdv.unique' => 'Votre heure rendez-vous exist déja',
+        ];
+       
+        $validator =  $request->validate($rules,$message);
+
         $rdv->id_patient = request('id_patient'); 
         $rdv->etat_rdv = request('etat_rdv');
         $rdv->date_rdv = request('date_rdv');
@@ -56,14 +75,34 @@ class Rendez_vousController extends Controller
 
     public function update(Request $request,$id){
         
-        $patient =Patient::findOrFail($id);
-        $patient-> update([
-            
+        $rdv =Rendez_vous::findOrFail($id);
+
+        $rule= [
+            'id_patient'=>'required | max:50',
+            'etat_rdv'=>'required | max:50',
+            'date_rdv'=>'required  ',
+            'heure_rdv'=>'required '
+        ];
+    
+        
+        $messag =  [
+            'id_patient.required' => 'Choisir votre patient',
+            'id_patient.max' => 'Le patient est grand',
+            'etat_rdv.required' => 'Choisir votre rendez-vous',
+            'etat_rdv.max' => 'Le rendez-vous est grand',
+            'date_rdv.required' => 'Entre votre date rendez-vous',
+            'heure_rdv.required' => 'Entre votre heure rendez-vous',
+        ];
+        $validator =  $request->validate($rules,$message);
+       
+       
+        $rdv-> update([
+           
             'etat_rdv' => request('etat_rdv'),
             'date_rdv' => request('date_rdv'),
             'heure_rdv' => request('heure_rdv'),
            
         ]);
-        return redirect('/liste_des_patient') ;
-    }
+        return redirect('/liste_des_rendez_vous') ;
+    }  
 }

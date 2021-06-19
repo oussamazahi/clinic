@@ -17,7 +17,7 @@ class CreateMedicamentPreseritTable extends Migration
             $table->bigIncrements('id_med');
             $table->timestamps();
             $table->unsignedBigInteger('id_patient');
-            $table->string('posdcgre');
+            $table->string('posologie');
             $table->foreign('id_patient')->references('id')->on('patient')
             ->onDelete('cascade');
             $table->foreign('id_med')->references('id')->on('medicament')

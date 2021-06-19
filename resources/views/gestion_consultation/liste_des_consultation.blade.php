@@ -36,6 +36,7 @@
                     <td>{{$consultation->motif}} </td>
                     <td>{{$consultation->concluion}} </td>
                     <td>
+                       
                         <a href="/edit_consultation/{{$consultation->id}}">
                             <button class="btn btn-outline-dark">
                                 <img src="img/border-color.png" alt="Modifier">
@@ -48,9 +49,29 @@
                         <button  class="btn btn-outline-dark">
                         <img src="img/trash-can-outline (6).png" alt="Supprimer">
                         </button>
-                        </td>
-                        </form>    
-                
+                        </form> 
+                          
+                            <li class="delete nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="/ordonnace.index" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="display: table-row;color: #193a54;">
+                              
+                                Ordonnance
+                                
+                                </a>
+                                <ul class="dropdown-menu" >
+                                <a href="/ordonnance">
+                                    <li  style="background-color: #e1edfc;">
+                                       Ordonnance
+                                    </li>
+                                    <a href="/ordonnance.ajouter/{{$consultation->id}}">
+                                    <li  style="background-color: #e1edfc;">
+                                      Ajouter Ordonnance
+                                    </li>
+                                    </a>
+                                </ul>
+                            </li>
+                         
+                    </td>
+                    
                 </tr>
                 @endforeach
             </tbody>
