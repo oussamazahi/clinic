@@ -20,6 +20,7 @@ class ConsultationController extends Controller
     public function liste_des_consultation(){
         $cons = Consultation::all()->map(function ($item) {
             $patient = patient::find($item->id_patient);
+            $item['id_patient'] = $patient->id;
             $item['nom_patient'] = $patient->nom;
             $item['prenom_patient'] = $patient->prenom;
             return $item;
@@ -31,6 +32,7 @@ class ConsultationController extends Controller
         $patient = Patient::all();
         $rdv = Rendez_vous::all()->map(function ($item) {
             $patient = patient::find($item->id_patient);
+            
             $item['nom_patient'] = $patient->nom;
             $item['prenom_patient'] = $patient->prenom;
             return $item;

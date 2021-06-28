@@ -75,9 +75,9 @@ class Rendez_vousController extends Controller
 
     public function update(Request $request,$id){
         
-        $rdv =Rendez_vous::findOrFail($id);
+        $rdv =Rendez_vous::where('id_rdv',$id);
 
-        $rule= [
+        $rules= [
             'id_patient'=>'required | max:50',
             'etat_rdv'=>'required | max:50',
             'date_rdv'=>'required  ',
@@ -85,7 +85,7 @@ class Rendez_vousController extends Controller
         ];
     
         
-        $messag =  [
+        $message =  [
             'id_patient.required' => 'Choisir votre patient',
             'id_patient.max' => 'Le patient est grand',
             'etat_rdv.required' => 'Choisir votre rendez-vous',
@@ -93,11 +93,10 @@ class Rendez_vousController extends Controller
             'date_rdv.required' => 'Entre votre date rendez-vous',
             'heure_rdv.required' => 'Entre votre heure rendez-vous',
         ];
-        $validator =  $request->validate($rules,$message);
+      
        
        
         $rdv-> update([
-           
             'etat_rdv' => request('etat_rdv'),
             'date_rdv' => request('date_rdv'),
             'heure_rdv' => request('heure_rdv'),

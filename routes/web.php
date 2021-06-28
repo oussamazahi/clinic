@@ -57,6 +57,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/wel', function () {
     return view('welcome1');
 });
-Route::get('/ordonnance/{id}','OrdonnanceController@ordonnance');
-Route::get('/ordonnance.ajouter','OrdonnanceController@ajouter');
-Route::post('/ordonnance/{id}','OrdonnanceController@save')->name('save_ordonnance');
+Route::get('/ordonnance/{id}','OrdonnanceController@ordonnance')->middleware('auth');
+Route::get('/ordonnance.ajouter/{id}/{Nm?}','OrdonnanceController@ajouter')->middleware('auth');
+Route::post('/ordonnance/{id}/{idPatient}/{Nm?}','OrdonnanceController@save')->name('save_ordonnance');
